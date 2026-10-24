@@ -1,0 +1,62 @@
+{
+  "name": "@relative/design",
+  "version": "0.1.0",
+  "description": "Relative design system: animated rounded icons (line + fill) and the Relative typefaces.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "default": "./dist/icons/index.js"
+    },
+    "./icons/*": {
+      "types": "./dist/icons/icon.d.ts",
+      "default": "./dist/icons/*.js"
+    },
+    "./all": {
+      "types": "./dist/all.d.ts",
+      "default": "./dist/all.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
+    },
+    "./react/dynamic": {
+      "types": "./dist/react/dynamic.d.ts",
+      "default": "./dist/react/dynamic.js"
+    },
+    "./icons.css": "./dist/icons.css",
+    "./svg/*": "./dist/svg/*",
+    "./fonts.css": "./fonts/fonts.css",
+    "./fonts/*": "./fonts/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "fonts"
+  ],
+  "scripts": {
+    "build": "node build.cjs",
+    "test": "node build.cjs && node test.js",
+    "sheet": "node tools/sheet.cjs",
+    "film": "node tools/film.cjs"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}

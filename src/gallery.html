@@ -1,0 +1,297 @@
+<title>Softline Icons</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: sticky control rail + inspector on the left, category grids on the right; stacks on phones. */
+  :root {
+    --bg: #f4f4f1; --surface: #ffffff; --sunken: #ebebe6; --fg: #1a1a1d; --muted: #6d6d68; --line: #dfdfd8;
+    --accent: #3451d1; --accent-ink: #ffffff;
+    --display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+    --body: "Figtree", system-ui, -apple-system, sans-serif;
+    --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --ic-color: var(--fg);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111113; --surface: #1a1a1e; --sunken: #232328; --fg: #ededea; --muted: #9a9a94; --line: #2c2c32;
+      --accent: #8ea2ff; --accent-ink: #111113; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111113; --surface: #1a1a1e; --sunken: #232328; --fg: #ededea; --muted: #9a9a94; --line: #2c2c32;
+    --accent: #8ea2ff; --accent-ink: #111113; color-scheme: dark;
+  }
+  * { box-sizing: border-box }
+  body { background: var(--bg); color: var(--fg); font: 15px/1.45 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px }
+  button, input, select, textarea { font: inherit; color: inherit }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+
+  .top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding-block: 20px 16px }
+  h1 { font: 700 26px/1 var(--display); letter-spacing: -.02em; margin: 0; text-wrap: balance }
+  .count { color: var(--muted); font: 13px var(--mono) }
+  .search { margin-left: auto; flex: 0 1 280px; min-width: 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface) }
+
+  .wrap { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start }
+  @media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr) } .search { margin-left: 0; flex-basis: 100% } }
+
+  .rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 16px;
+    max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; padding-bottom: 4px }
+  @media (max-width: 860px) { .rail { position: static; max-height: none; overflow: visible } }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 14px; min-width: 0 }
+  .panel h2 { margin: 0; font: 600 11px var(--body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+  .row { display: grid; gap: 6px }
+  .row label, .lbl { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted) }
+  .row output { font: 12px var(--mono); color: var(--fg); font-variant-numeric: tabular-nums }
+  input[type=range] { width: 100%; accent-color: var(--accent) }
+  select { padding: 7px 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface) }
+  .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 3px; border-radius: 10px; background: var(--sunken) }
+  .seg button { border: 0; background: none; padding: 6px 8px; border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 13px }
+  .seg button[aria-pressed=true] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px #0000001f }
+  .swatches { display: flex; gap: 8px; align-items: center }
+  .swatches button { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line); cursor: pointer; padding: 0 }
+  .swatches button[aria-pressed=true] { box-shadow: 0 0 0 2px var(--accent) }
+  .swatches input { width: 28px; height: 28px; border: 0; padding: 0; background: none; cursor: pointer }
+  .code { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--sunken); font: 12px/1.6 var(--mono); white-space: pre; overflow-x: auto }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap }
+  .btn { border: 1px solid var(--line); background: var(--surface); border-radius: 9px; padding: 7px 12px; cursor: pointer; font-size: 13px }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
+  .btn:hover { border-color: var(--muted) }
+
+  .stage { display: flex; gap: 12px; color: var(--ic-color) }
+  .stage div { flex: 1; display: grid; place-items: center; gap: 6px; padding: 16px 0 10px; border-radius: 12px; background: var(--sunken) }
+  .stage svg { width: 72px; height: 72px }
+  .stage span { font: 11px var(--mono); color: var(--muted) }
+  .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 8px }
+  .meta strong { font: 600 18px var(--display) }
+  .meta span { font: 12px var(--mono); color: var(--muted) }
+  textarea.code { width: 100%; height: 72px; resize: vertical; border: 0; white-space: pre-wrap; word-break: break-all }
+
+  section h3 { display: flex; gap: 8px; align-items: baseline; margin: 8px 0 12px; font: 600 15px var(--display); text-transform: capitalize }
+  section h3 span { font: 12px var(--mono); color: var(--muted) }
+  section + section { margin-top: 24px }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px }
+  .cell { display: grid; justify-items: center; gap: 10px; padding: 18px 6px 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+    cursor: pointer; color: var(--ic-color); min-width: 0; transition: border-color .15s, transform .15s }
+  .cell:hover { border-color: var(--muted) }
+  .cell[aria-pressed=true] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) }
+  .cell svg { width: var(--sz, 28px); height: var(--sz, 28px) }
+  .cell span { font-size: 11px; color: var(--muted); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+  .empty { color: var(--muted); padding: 40px 0 }
+
+  #toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); translate: -50% 8px; opacity: 0; pointer-events: none;
+    background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 13px; transition: opacity .2s, translate .2s }
+  #toast.on { opacity: 1; translate: -50% 0 }
+  @media (prefers-reduced-motion: reduce) { .cell, #toast { transition: none } }
+</style>
+
+<header class="top">
+  <h1>Softline Icons</h1>
+  <span class="count" id="count"></span>
+  <input class="search" id="q" type="search" placeholder="Search icons or categories" aria-label="Search icons">
+</header>
+
+<div class="wrap">
+  <aside class="rail">
+    <div class="panel" aria-label="Selected icon">
+      <div class="meta"><strong id="selName">bell</strong><span id="selMeta"></span></div>
+      <div class="stage" id="stage"></div>
+      <div class="btns">
+        <button class="btn primary" id="copySvg" type="button">Copy SVG</button>
+        <button class="btn" id="copyJsx" type="button">Copy JSX</button>
+        <button class="btn" id="replay" type="button">Replay</button>
+      </div>
+      <textarea class="code" id="fallback" readonly hidden aria-label="Code to copy"></textarea>
+    </div>
+
+    <div class="panel">
+      <h2>Style</h2>
+      <div class="row"><span class="lbl">Variant</span>
+        <div class="seg" id="variant"><button type="button" value="line" aria-pressed="true">Line</button><button type="button" value="fill" aria-pressed="false">Fill</button></div>
+      </div>
+      <div class="row"><label for="stroke">Stroke <output id="strokeV">2px</output></label><input id="stroke" type="range" min="1" max="3" step="0.25" value="2"></div>
+      <div class="row"><label for="gap">Overlap gap <output id="gapV">1.5px</output></label><input id="gap" type="range" min="0.5" max="3" step="0.25" value="1.5"></div>
+      <div class="row"><label for="size">Preview size <output id="sizeV">28px</output></label><input id="size" type="range" min="16" max="48" step="4" value="28"></div>
+      <div class="row"><span class="lbl">Color</span>
+        <div class="swatches" id="swatches">
+          <button type="button" data-c="" aria-pressed="true" aria-label="Text color" style="background:var(--fg)"></button>
+          <button type="button" data-c="#3451d1" aria-pressed="false" aria-label="Cobalt" style="background:#3451d1"></button>
+          <button type="button" data-c="#e0643a" aria-pressed="false" aria-label="Coral" style="background:#e0643a"></button>
+          <button type="button" data-c="#2f9e6e" aria-pressed="false" aria-label="Moss" style="background:#2f9e6e"></button>
+          <button type="button" data-c="#9b4dca" aria-pressed="false" aria-label="Plum" style="background:#9b4dca"></button>
+          <input type="color" id="color" value="#3451d1" aria-label="Custom color">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Motion</h2>
+      <div class="row"><span class="lbl">Play</span>
+        <div class="seg" id="trigger"><button type="button" value="hover" aria-pressed="true">On hover</button><button type="button" value="loop" aria-pressed="false">Loop</button><button type="button" value="none" aria-pressed="false">Off</button></div>
+      </div>
+      <div class="row"><label for="dur">Duration <output id="durV">0.9s</output></label><input id="dur" type="range" min="0.3" max="2" step="0.1" value="0.9"></div>
+      <div class="row"><label for="ease">Easing</label>
+        <select id="ease">
+          <option value="cubic-bezier(.45,0,.25,1)">Smooth</option>
+          <option value="cubic-bezier(.34,1.56,.64,1)">Springy</option>
+          <option value="ease-out">Ease out</option>
+          <option value="ease-in-out">Ease in-out</option>
+          <option value="linear">Linear</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Your CSS</h2>
+      <pre class="code" id="cssOut"></pre>
+      <div class="btns"><button class="btn" id="copyCss" type="button">Copy CSS</button><button class="btn" id="reset" type="button">Reset all</button></div>
+    </div>
+  </aside>
+
+  <main id="main"></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ICONS -->
+<script>
+  const DEFAULTS = { variant: "line", trigger: "hover", stroke: 2, gap: 1.5, size: 28, dur: 0.9, ease: "cubic-bezier(.45,0,.25,1)", color: "" };
+  const state = { ...DEFAULTS, selected: "bell" };
+  const $ = (id) => document.getElementById(id);
+  const root = document.documentElement;
+
+  const sheet = document.createElement("style");
+  sheet.textContent = Icons.css();
+  document.head.append(sheet);
+
+  const byCat = {};
+  for (const [name, icon] of Object.entries(Icons.ICONS)) (byCat[icon.category] ||= []).push(name);
+  const animOf = (name) => {
+    const i = Icons.ICONS[name];
+    return [...new Set([i.anim, ...i.els.map((e) => e[2].anim)].filter(Boolean))].join(", ");
+  };
+  const opts = (extra) => ({ variant: state.variant, gap: state.gap, trigger: state.trigger, css: false, ...extra });
+
+  // Grid re-renders only for options baked into the SVG (variant, gap, trigger); the rest are CSS variables.
+  function renderGrid() {
+    const q = $("q").value.trim().toLowerCase();
+    let shown = 0;
+    const html = Object.entries(byCat).map(([cat, names]) => {
+      const hits = names.filter((n) => !q || n.includes(q) || cat.includes(q));
+      shown += hits.length;
+      if (!hits.length) return "";
+      return `<section><h3>${cat} <span>${hits.length}</span></h3><div class="grid">${hits.map((n) =>
+        `<button type="button" class="cell ic-trigger" data-name="${n}" aria-pressed="${n === state.selected}" title="${n}">` +
+        `${Icons.svg(n, opts())}<span>${n}</span></button>`).join("")}</div></section>`;
+    }).join("");
+    $("main").innerHTML = html || `<p class="empty">No icons match “${q.replace(/</g, "&lt;")}”. Try a shorter word, like “arrow” or “user”.</p>`;
+    $("count").textContent = q ? `${shown} of ${Icons.names.length}` : `${Icons.names.length} icons · line + fill · animated`;
+  }
+
+  function renderInspector() {
+    const n = state.selected;
+    $("selName").textContent = n;
+    $("selMeta").textContent = `${Icons.ICONS[n].category} · ${animOf(n)}`;
+    $("stage").innerHTML = ["line", "fill"].map((v) =>
+      `<div>${Icons.svg(n, opts({ variant: v, trigger: state.trigger === "none" ? "none" : "loop" }))}<span>${v}</span></div>`).join("");
+    $("fallback").hidden = true;
+  }
+
+  function applyVars() {
+    root.style.setProperty("--ic-stroke", state.stroke + "px");
+    root.style.setProperty("--ic-dur", state.dur + "s");
+    root.style.setProperty("--ic-ease", state.ease);
+    root.style.setProperty("--sz", state.size + "px");
+    if (state.color) root.style.setProperty("--ic-color", state.color); else root.style.removeProperty("--ic-color");
+    $("strokeV").value = state.stroke + "px";
+    $("gapV").value = state.gap + "px";
+    $("sizeV").value = state.size + "px";
+    $("durV").value = state.dur + "s";
+    const lines = [`  --ic-stroke: ${state.stroke}px;`, `  --ic-dur: ${state.dur}s;`, `  --ic-ease: ${state.ease};`];
+    if (state.color) lines.push(`  color: ${state.color};`);
+    $("cssOut").textContent = `.ic {\n${lines.join("\n")}\n}`;
+  }
+
+  function syncControls() {
+    for (const id of ["variant", "trigger"])
+      for (const b of $(id).children) b.setAttribute("aria-pressed", b.value === state[id]);
+    for (const id of ["stroke", "gap", "size", "dur"]) $(id).value = state[id];
+    $("ease").value = state.ease;
+    for (const b of $("swatches").querySelectorAll("button")) b.setAttribute("aria-pressed", b.dataset.c === state.color);
+  }
+
+  const svgCode = (n) => Icons.svg(n, { variant: state.variant, gap: state.gap, stroke: state.stroke, trigger: state.trigger, id: `ic-${n}` });
+  function jsxCode(n) {
+    const props = [`name="${n}"`];
+    if (state.variant !== DEFAULTS.variant) props.push(`variant="${state.variant}"`);
+    if (state.stroke !== DEFAULTS.stroke) props.push(`stroke={${state.stroke}}`);
+    if (state.gap !== DEFAULTS.gap) props.push(`gap={${state.gap}}`);
+    if (state.trigger !== DEFAULTS.trigger) props.push(`trigger="${state.trigger}"`);
+    return `<Icon ${props.join(" ")} />`;
+  }
+
+  let toastTimer;
+  function toast(msg) {
+    $("toast").textContent = msg;
+    $("toast").classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $("toast").classList.remove("on"), 1600);
+  }
+  async function copy(text, label) {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast(`Copied ${label}`);
+    } catch {
+      const f = $("fallback");
+      f.hidden = false;
+      f.value = text;
+      f.select();
+      toast("Copying is blocked here. The code is selected below, press ⌘C or Ctrl+C.");
+    }
+  }
+
+  function select(name) {
+    state.selected = name;
+    for (const c of document.querySelectorAll(".cell[aria-pressed=true]")) c.setAttribute("aria-pressed", "false");
+    document.querySelector(`.cell[data-name="${name}"]`)?.setAttribute("aria-pressed", "true");
+    renderInspector();
+  }
+
+  for (const id of ["variant", "trigger"])
+    $(id).addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      state[id] = b.value;
+      syncControls(); renderGrid(); renderInspector();
+    });
+  for (const id of ["stroke", "size", "dur"]) $(id).addEventListener("input", (e) => { state[id] = +e.target.value; applyVars(); });
+  $("gap").addEventListener("input", (e) => { state.gap = +e.target.value; applyVars(); renderGrid(); renderInspector(); });
+  $("ease").addEventListener("change", (e) => { state.ease = e.target.value; applyVars(); });
+  $("swatches").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    state.color = b.dataset.c;
+    syncControls(); applyVars();
+  });
+  $("color").addEventListener("input", (e) => { state.color = e.target.value; syncControls(); applyVars(); });
+  $("q").addEventListener("input", renderGrid);
+  $("main").addEventListener("click", (e) => {
+    const cell = e.target.closest(".cell");
+    if (!cell) return;
+    select(cell.dataset.name);
+    history.replaceState(null, "", "#" + cell.dataset.name);
+  });
+  $("copySvg").addEventListener("click", () => copy(svgCode(state.selected), "SVG"));
+  $("copyJsx").addEventListener("click", () => copy(jsxCode(state.selected), "JSX"));
+  $("copyCss").addEventListener("click", () => copy($("cssOut").textContent, "CSS"));
+  $("replay").addEventListener("click", renderInspector);
+  $("reset").addEventListener("click", () => {
+    Object.assign(state, DEFAULTS);
+    syncControls(); applyVars(); renderGrid(); renderInspector();
+  });
+
+  const fromHash = location.hash.slice(1);
+  if (Icons.ICONS[fromHash]) state.selected = fromHash;
+  syncControls(); applyVars(); renderGrid(); renderInspector();
+</script>
