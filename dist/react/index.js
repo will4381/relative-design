@@ -147,6 +147,34 @@ import i_userGroup from "../icons/user-group.js";
 import i_idCard from "../icons/id-card.js";
 import i_contactBook from "../icons/contact-book.js";
 import i_translate from "../icons/translate.js";
+import i_dollar from "../icons/dollar.js";
+import i_euro from "../icons/euro.js";
+import i_poundSterling from "../icons/pound-sterling.js";
+import i_japaneseYen from "../icons/japanese-yen.js";
+import i_chineseYuan from "../icons/chinese-yuan.js";
+import i_indianRupee from "../icons/indian-rupee.js";
+import i_russianRuble from "../icons/russian-ruble.js";
+import i_koreanWon from "../icons/korean-won.js";
+import i_turkishLira from "../icons/turkish-lira.js";
+import i_swissFranc from "../icons/swiss-franc.js";
+import i_philippinePeso from "../icons/philippine-peso.js";
+import i_nigerianNaira from "../icons/nigerian-naira.js";
+import i_israeliShekel from "../icons/israeli-shekel.js";
+import i_thaiBaht from "../icons/thai-baht.js";
+import i_vietnameseDong from "../icons/vietnamese-dong.js";
+import i_brazilianReal from "../icons/brazilian-real.js";
+import i_southAfricanRand from "../icons/south-african-rand.js";
+import i_swedishKrona from "../icons/swedish-krona.js";
+import i_polishZloty from "../icons/polish-zloty.js";
+import i_indonesianRupiah from "../icons/indonesian-rupiah.js";
+import i_malaysianRinggit from "../icons/malaysian-ringgit.js";
+import i_bitcoin from "../icons/bitcoin.js";
+import i_ethereum from "../icons/ethereum.js";
+import i_currency from "../icons/currency.js";
+import i_banknote from "../icons/banknote.js";
+import i_coins from "../icons/coins.js";
+import i_currencyExchange from "../icons/currency-exchange.js";
+import i_walletCards from "../icons/wallet-cards.js";
 import i_braces from "../icons/braces.js";
 import i_brackets from "../icons/brackets.js";
 import i_binary from "../icons/binary.js";
@@ -465,6 +493,21 @@ import i_badge from "../icons/badge.js";
 import i_gem from "../icons/gem.js";
 import i_partyPopper from "../icons/party-popper.js";
 import i_egg from "../icons/egg.js";
+import i_api from "../icons/api.js";
+import i_apiKey from "../icons/api-key.js";
+import i_keyRound from "../icons/key-round.js";
+import i_keySquare from "../icons/key-square.js";
+import i_keyPlus from "../icons/key-plus.js";
+import i_keyOff from "../icons/key-off.js";
+import i_keyRotate from "../icons/key-rotate.js";
+import i_token from "../icons/token.js";
+import i_secret from "../icons/secret.js";
+import i_password from "../icons/password.js";
+import i_shieldKey from "../icons/shield-key.js";
+import i_vault from "../icons/vault.js";
+import i_lockKeyhole from "../icons/lock-keyhole.js";
+import i_terminalKey from "../icons/terminal-key.js";
+import i_curl from "../icons/curl.js";
 import i_lock from "../icons/lock.js";
 import i_unlock from "../icons/unlock.js";
 import i_eye from "../icons/eye.js";
@@ -696,6 +739,34 @@ export const UserGroup = /*#__PURE__*/ createIcon(i_userGroup, "UserGroup");
 export const IdCard = /*#__PURE__*/ createIcon(i_idCard, "IdCard");
 export const ContactBook = /*#__PURE__*/ createIcon(i_contactBook, "ContactBook");
 export const Translate = /*#__PURE__*/ createIcon(i_translate, "Translate");
+export const Dollar = /*#__PURE__*/ createIcon(i_dollar, "Dollar");
+export const Euro = /*#__PURE__*/ createIcon(i_euro, "Euro");
+export const PoundSterling = /*#__PURE__*/ createIcon(i_poundSterling, "PoundSterling");
+export const JapaneseYen = /*#__PURE__*/ createIcon(i_japaneseYen, "JapaneseYen");
+export const ChineseYuan = /*#__PURE__*/ createIcon(i_chineseYuan, "ChineseYuan");
+export const IndianRupee = /*#__PURE__*/ createIcon(i_indianRupee, "IndianRupee");
+export const RussianRuble = /*#__PURE__*/ createIcon(i_russianRuble, "RussianRuble");
+export const KoreanWon = /*#__PURE__*/ createIcon(i_koreanWon, "KoreanWon");
+export const TurkishLira = /*#__PURE__*/ createIcon(i_turkishLira, "TurkishLira");
+export const SwissFranc = /*#__PURE__*/ createIcon(i_swissFranc, "SwissFranc");
+export const PhilippinePeso = /*#__PURE__*/ createIcon(i_philippinePeso, "PhilippinePeso");
+export const NigerianNaira = /*#__PURE__*/ createIcon(i_nigerianNaira, "NigerianNaira");
+export const IsraeliShekel = /*#__PURE__*/ createIcon(i_israeliShekel, "IsraeliShekel");
+export const ThaiBaht = /*#__PURE__*/ createIcon(i_thaiBaht, "ThaiBaht");
+export const VietnameseDong = /*#__PURE__*/ createIcon(i_vietnameseDong, "VietnameseDong");
+export const BrazilianReal = /*#__PURE__*/ createIcon(i_brazilianReal, "BrazilianReal");
+export const SouthAfricanRand = /*#__PURE__*/ createIcon(i_southAfricanRand, "SouthAfricanRand");
+export const SwedishKrona = /*#__PURE__*/ createIcon(i_swedishKrona, "SwedishKrona");
+export const PolishZloty = /*#__PURE__*/ createIcon(i_polishZloty, "PolishZloty");
+export const IndonesianRupiah = /*#__PURE__*/ createIcon(i_indonesianRupiah, "IndonesianRupiah");
+export const MalaysianRinggit = /*#__PURE__*/ createIcon(i_malaysianRinggit, "MalaysianRinggit");
+export const Bitcoin = /*#__PURE__*/ createIcon(i_bitcoin, "Bitcoin");
+export const Ethereum = /*#__PURE__*/ createIcon(i_ethereum, "Ethereum");
+export const Currency = /*#__PURE__*/ createIcon(i_currency, "Currency");
+export const Banknote = /*#__PURE__*/ createIcon(i_banknote, "Banknote");
+export const Coins = /*#__PURE__*/ createIcon(i_coins, "Coins");
+export const CurrencyExchange = /*#__PURE__*/ createIcon(i_currencyExchange, "CurrencyExchange");
+export const WalletCards = /*#__PURE__*/ createIcon(i_walletCards, "WalletCards");
 export const Braces = /*#__PURE__*/ createIcon(i_braces, "Braces");
 export const Brackets = /*#__PURE__*/ createIcon(i_brackets, "Brackets");
 export const Binary = /*#__PURE__*/ createIcon(i_binary, "Binary");
@@ -1014,6 +1085,21 @@ export const Badge = /*#__PURE__*/ createIcon(i_badge, "Badge");
 export const Gem = /*#__PURE__*/ createIcon(i_gem, "Gem");
 export const PartyPopper = /*#__PURE__*/ createIcon(i_partyPopper, "PartyPopper");
 export const Egg = /*#__PURE__*/ createIcon(i_egg, "Egg");
+export const Api = /*#__PURE__*/ createIcon(i_api, "Api");
+export const ApiKey = /*#__PURE__*/ createIcon(i_apiKey, "ApiKey");
+export const KeyRound = /*#__PURE__*/ createIcon(i_keyRound, "KeyRound");
+export const KeySquare = /*#__PURE__*/ createIcon(i_keySquare, "KeySquare");
+export const KeyPlus = /*#__PURE__*/ createIcon(i_keyPlus, "KeyPlus");
+export const KeyOff = /*#__PURE__*/ createIcon(i_keyOff, "KeyOff");
+export const KeyRotate = /*#__PURE__*/ createIcon(i_keyRotate, "KeyRotate");
+export const Token = /*#__PURE__*/ createIcon(i_token, "Token");
+export const Secret = /*#__PURE__*/ createIcon(i_secret, "Secret");
+export const Password = /*#__PURE__*/ createIcon(i_password, "Password");
+export const ShieldKey = /*#__PURE__*/ createIcon(i_shieldKey, "ShieldKey");
+export const Vault = /*#__PURE__*/ createIcon(i_vault, "Vault");
+export const LockKeyhole = /*#__PURE__*/ createIcon(i_lockKeyhole, "LockKeyhole");
+export const TerminalKey = /*#__PURE__*/ createIcon(i_terminalKey, "TerminalKey");
+export const Curl = /*#__PURE__*/ createIcon(i_curl, "Curl");
 export const Lock = /*#__PURE__*/ createIcon(i_lock, "Lock");
 export const Unlock = /*#__PURE__*/ createIcon(i_unlock, "Unlock");
 export const Eye = /*#__PURE__*/ createIcon(i_eye, "Eye");
@@ -1246,6 +1332,34 @@ export {
   IdCard as IdCardIcon,
   ContactBook as ContactBookIcon,
   Translate as TranslateIcon,
+  Dollar as DollarIcon,
+  Euro as EuroIcon,
+  PoundSterling as PoundSterlingIcon,
+  JapaneseYen as JapaneseYenIcon,
+  ChineseYuan as ChineseYuanIcon,
+  IndianRupee as IndianRupeeIcon,
+  RussianRuble as RussianRubleIcon,
+  KoreanWon as KoreanWonIcon,
+  TurkishLira as TurkishLiraIcon,
+  SwissFranc as SwissFrancIcon,
+  PhilippinePeso as PhilippinePesoIcon,
+  NigerianNaira as NigerianNairaIcon,
+  IsraeliShekel as IsraeliShekelIcon,
+  ThaiBaht as ThaiBahtIcon,
+  VietnameseDong as VietnameseDongIcon,
+  BrazilianReal as BrazilianRealIcon,
+  SouthAfricanRand as SouthAfricanRandIcon,
+  SwedishKrona as SwedishKronaIcon,
+  PolishZloty as PolishZlotyIcon,
+  IndonesianRupiah as IndonesianRupiahIcon,
+  MalaysianRinggit as MalaysianRinggitIcon,
+  Bitcoin as BitcoinIcon,
+  Ethereum as EthereumIcon,
+  Currency as CurrencyIcon,
+  Banknote as BanknoteIcon,
+  Coins as CoinsIcon,
+  CurrencyExchange as CurrencyExchangeIcon,
+  WalletCards as WalletCardsIcon,
   Braces as BracesIcon,
   Brackets as BracketsIcon,
   Binary as BinaryIcon,
@@ -1564,6 +1678,21 @@ export {
   Gem as GemIcon,
   PartyPopper as PartyPopperIcon,
   Egg as EggIcon,
+  Api as ApiIcon,
+  ApiKey as ApiKeyIcon,
+  KeyRound as KeyRoundIcon,
+  KeySquare as KeySquareIcon,
+  KeyPlus as KeyPlusIcon,
+  KeyOff as KeyOffIcon,
+  KeyRotate as KeyRotateIcon,
+  Token as TokenIcon,
+  Secret as SecretIcon,
+  Password as PasswordIcon,
+  ShieldKey as ShieldKeyIcon,
+  Vault as VaultIcon,
+  LockKeyhole as LockKeyholeIcon,
+  TerminalKey as TerminalKeyIcon,
+  Curl as CurlIcon,
   Lock as LockIcon,
   Unlock as UnlockIcon,
   Eye as EyeIcon,

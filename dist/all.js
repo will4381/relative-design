@@ -146,6 +146,34 @@ import i_userGroup from "./icons/user-group.js";
 import i_idCard from "./icons/id-card.js";
 import i_contactBook from "./icons/contact-book.js";
 import i_translate from "./icons/translate.js";
+import i_dollar from "./icons/dollar.js";
+import i_euro from "./icons/euro.js";
+import i_poundSterling from "./icons/pound-sterling.js";
+import i_japaneseYen from "./icons/japanese-yen.js";
+import i_chineseYuan from "./icons/chinese-yuan.js";
+import i_indianRupee from "./icons/indian-rupee.js";
+import i_russianRuble from "./icons/russian-ruble.js";
+import i_koreanWon from "./icons/korean-won.js";
+import i_turkishLira from "./icons/turkish-lira.js";
+import i_swissFranc from "./icons/swiss-franc.js";
+import i_philippinePeso from "./icons/philippine-peso.js";
+import i_nigerianNaira from "./icons/nigerian-naira.js";
+import i_israeliShekel from "./icons/israeli-shekel.js";
+import i_thaiBaht from "./icons/thai-baht.js";
+import i_vietnameseDong from "./icons/vietnamese-dong.js";
+import i_brazilianReal from "./icons/brazilian-real.js";
+import i_southAfricanRand from "./icons/south-african-rand.js";
+import i_swedishKrona from "./icons/swedish-krona.js";
+import i_polishZloty from "./icons/polish-zloty.js";
+import i_indonesianRupiah from "./icons/indonesian-rupiah.js";
+import i_malaysianRinggit from "./icons/malaysian-ringgit.js";
+import i_bitcoin from "./icons/bitcoin.js";
+import i_ethereum from "./icons/ethereum.js";
+import i_currency from "./icons/currency.js";
+import i_banknote from "./icons/banknote.js";
+import i_coins from "./icons/coins.js";
+import i_currencyExchange from "./icons/currency-exchange.js";
+import i_walletCards from "./icons/wallet-cards.js";
 import i_braces from "./icons/braces.js";
 import i_brackets from "./icons/brackets.js";
 import i_binary from "./icons/binary.js";
@@ -464,6 +492,21 @@ import i_badge from "./icons/badge.js";
 import i_gem from "./icons/gem.js";
 import i_partyPopper from "./icons/party-popper.js";
 import i_egg from "./icons/egg.js";
+import i_api from "./icons/api.js";
+import i_apiKey from "./icons/api-key.js";
+import i_keyRound from "./icons/key-round.js";
+import i_keySquare from "./icons/key-square.js";
+import i_keyPlus from "./icons/key-plus.js";
+import i_keyOff from "./icons/key-off.js";
+import i_keyRotate from "./icons/key-rotate.js";
+import i_token from "./icons/token.js";
+import i_secret from "./icons/secret.js";
+import i_password from "./icons/password.js";
+import i_shieldKey from "./icons/shield-key.js";
+import i_vault from "./icons/vault.js";
+import i_lockKeyhole from "./icons/lock-keyhole.js";
+import i_terminalKey from "./icons/terminal-key.js";
+import i_curl from "./icons/curl.js";
 import i_lock from "./icons/lock.js";
 import i_unlock from "./icons/unlock.js";
 import i_eye from "./icons/eye.js";
@@ -696,6 +739,34 @@ export const icons = {
   "id-card": i_idCard,
   "contact-book": i_contactBook,
   "translate": i_translate,
+  "dollar": i_dollar,
+  "euro": i_euro,
+  "pound-sterling": i_poundSterling,
+  "japanese-yen": i_japaneseYen,
+  "chinese-yuan": i_chineseYuan,
+  "indian-rupee": i_indianRupee,
+  "russian-ruble": i_russianRuble,
+  "korean-won": i_koreanWon,
+  "turkish-lira": i_turkishLira,
+  "swiss-franc": i_swissFranc,
+  "philippine-peso": i_philippinePeso,
+  "nigerian-naira": i_nigerianNaira,
+  "israeli-shekel": i_israeliShekel,
+  "thai-baht": i_thaiBaht,
+  "vietnamese-dong": i_vietnameseDong,
+  "brazilian-real": i_brazilianReal,
+  "south-african-rand": i_southAfricanRand,
+  "swedish-krona": i_swedishKrona,
+  "polish-zloty": i_polishZloty,
+  "indonesian-rupiah": i_indonesianRupiah,
+  "malaysian-ringgit": i_malaysianRinggit,
+  "bitcoin": i_bitcoin,
+  "ethereum": i_ethereum,
+  "currency": i_currency,
+  "banknote": i_banknote,
+  "coins": i_coins,
+  "currency-exchange": i_currencyExchange,
+  "wallet-cards": i_walletCards,
   "braces": i_braces,
   "brackets": i_brackets,
   "binary": i_binary,
@@ -1014,6 +1085,21 @@ export const icons = {
   "gem": i_gem,
   "party-popper": i_partyPopper,
   "egg": i_egg,
+  "api": i_api,
+  "api-key": i_apiKey,
+  "key-round": i_keyRound,
+  "key-square": i_keySquare,
+  "key-plus": i_keyPlus,
+  "key-off": i_keyOff,
+  "key-rotate": i_keyRotate,
+  "token": i_token,
+  "secret": i_secret,
+  "password": i_password,
+  "shield-key": i_shieldKey,
+  "vault": i_vault,
+  "lock-keyhole": i_lockKeyhole,
+  "terminal-key": i_terminalKey,
+  "curl": i_curl,
   "lock": i_lock,
   "unlock": i_unlock,
   "eye": i_eye,
