@@ -1,0 +1,10 @@
+/* Relative Serif: Light 300 … Bold 700 (derived from Sorts Mill Goudy, SIL OFL 1.1) */
+@font-face { font-family: "Relative Serif"; src: url("./relative-serif/RelativeSerif-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Relative Serif"; src: url("./relative-serif/RelativeSerif-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Relative Serif"; src: url("./relative-serif/RelativeSerif-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Relative Serif"; src: url("./relative-serif/RelativeSerif-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Relative Serif"; src: url("./relative-serif/RelativeSerif-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --font-relative-serif: "Relative Serif", ui-serif, Georgia, "Times New Roman", serif;
+}

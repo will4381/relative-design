@@ -1,0 +1,19 @@
+/* Relative Grotesque: variable weight 100–900 (derived from Inter Tight, SIL OFL 1.1) */
+@font-face {
+  font-family: "Relative Grotesque";
+  src: url("./relative-grotesque/RelativeGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Relative Grotesque";
+  src: url("./relative-grotesque/RelativeGrotesque-Italic-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-relative-grotesque: "Relative Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

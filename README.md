@@ -68,12 +68,25 @@ Plain files: `@relative/design/svg/line/bell.svg`, `@relative/design/svg/fill/be
 
 ## Fonts
 
-```js
-import "@relative/design/fonts.css";
-```
+From CSS (Vite, Next, Tailwind, PostCSS, esbuild all resolve it):
 ```css
+@import "@relative/design/fonts.css";            /* both families */
+@import "@relative/design/fonts/grotesque.css";  /* or just one */
+@import "@relative/design/fonts/serif.css";
+
 body { font-family: var(--font-relative-grotesque); }   /* variable, 100–900, + italic */
 h1   { font-family: var(--font-relative-serif); }       /* 300, 400, 500, 600, 700 */
+```
+From JS: `import "@relative/design/fonts.css";`
+
+Tailwind v4:
+```css
+@import "tailwindcss";
+@import "@relative/design/fonts.css";
+@theme {
+  --font-sans: var(--font-relative-grotesque);
+  --font-serif: var(--font-relative-serif);
+}
 ```
 
 Next.js with `next/font/local`: point `src` at

@@ -26,7 +26,9 @@ for (const [key, target] of Object.entries(pkg.exports)) {
   const files = typeof target === "string" ? [target] : Object.values(target);
   for (const f of files) if (!f.includes("*")) assert.ok(existsSync(f), `export ${key} → missing ${f}`);
 }
-for (const f of readFileSync("./fonts/fonts.css", "utf8").matchAll(/url\("\.\/([^"]+)"\)/g))
-  assert.ok(existsSync(`./fonts/${f[1]}`), `fonts.css → missing ${f[1]}`);
+for (const css of ["fonts.css", "grotesque.css", "serif.css"]) {
+  const src = readFileSync(`./fonts/${css}`, "utf8");
+  for (const [, f] of src.matchAll(/(?:url\(|@import )"\.\/([^"]+)"/g)) assert.ok(existsSync(`./fonts/${f}`), `${css} → missing ${f}`);
+}
 
 console.log(`ok: ${names.length} icons × 2 variants, ${Object.keys(pkg.exports).length} exports, fonts resolved`);
