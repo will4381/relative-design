@@ -1609,7 +1609,11 @@ Icons.define("communication", {
       anim: "bounce",
       y: -3,
       origin: "12 21",
-      els: [["l", "path", { d: dollar(7, 5.25, 17, 18.75, 3, 21) }]],
+      // tall, open S with short bar stubs above and below (no bar through the middle)
+      els: [
+        ["l", "path", { d: "M16.25 7.75C15.5 6.25 13.9 5.5 12 5.5 9.5 5.5 7.75 6.9 7.75 8.9 7.75 11 9.6 11.5 12 12s4.25 1 4.25 3.1c0 2-1.75 3.4-4.25 3.4-1.9 0-3.5-.75-4.25-2.25" }],
+        ["l", "path", { d: "M12 3v2.5M12 18.5V21" }],
+      ],
     },
     euro: {
       els: [
