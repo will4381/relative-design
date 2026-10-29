@@ -146,6 +146,26 @@ import i_userGroup from "./icons/user-group.js";
 import i_idCard from "./icons/id-card.js";
 import i_contactBook from "./icons/contact-book.js";
 import i_translate from "./icons/translate.js";
+import i_google from "./icons/google.js";
+import i_appleLogo from "./icons/apple-logo.js";
+import i_microsoft from "./icons/microsoft.js";
+import i_meta from "./icons/meta.js";
+import i_amazon from "./icons/amazon.js";
+import i_stripe from "./icons/stripe.js";
+import i_paypal from "./icons/paypal.js";
+import i_shopify from "./icons/shopify.js";
+import i_figma from "./icons/figma.js";
+import i_notion from "./icons/notion.js";
+import i_slack from "./icons/slack.js";
+import i_airbnb from "./icons/airbnb.js";
+import i_uber from "./icons/uber.js";
+import i_dropbox from "./icons/dropbox.js";
+import i_zoom from "./icons/zoom.js";
+import i_openai from "./icons/openai.js";
+import i_anthropic from "./icons/anthropic.js";
+import i_chrome from "./icons/chrome.js";
+import i_safari from "./icons/safari.js";
+import i_firefox from "./icons/firefox.js";
 import i_dollar from "./icons/dollar.js";
 import i_euro from "./icons/euro.js";
 import i_poundSterling from "./icons/pound-sterling.js";
@@ -507,6 +527,26 @@ import i_vault from "./icons/vault.js";
 import i_lockKeyhole from "./icons/lock-keyhole.js";
 import i_terminalKey from "./icons/terminal-key.js";
 import i_curl from "./icons/curl.js";
+import i_facebook from "./icons/facebook.js";
+import i_instagram from "./icons/instagram.js";
+import i_xTwitter from "./icons/x-twitter.js";
+import i_threads from "./icons/threads.js";
+import i_tiktok from "./icons/tiktok.js";
+import i_youtube from "./icons/youtube.js";
+import i_linkedin from "./icons/linkedin.js";
+import i_snapchat from "./icons/snapchat.js";
+import i_reddit from "./icons/reddit.js";
+import i_pinterest from "./icons/pinterest.js";
+import i_whatsapp from "./icons/whatsapp.js";
+import i_telegram from "./icons/telegram.js";
+import i_discord from "./icons/discord.js";
+import i_twitch from "./icons/twitch.js";
+import i_spotify from "./icons/spotify.js";
+import i_netflix from "./icons/netflix.js";
+import i_bluesky from "./icons/bluesky.js";
+import i_mastodon from "./icons/mastodon.js";
+import i_medium from "./icons/medium.js";
+import i_dribbble from "./icons/dribbble.js";
 import i_lock from "./icons/lock.js";
 import i_unlock from "./icons/unlock.js";
 import i_eye from "./icons/eye.js";
@@ -739,6 +779,26 @@ export const icons = {
   "id-card": i_idCard,
   "contact-book": i_contactBook,
   "translate": i_translate,
+  "google": i_google,
+  "apple-logo": i_appleLogo,
+  "microsoft": i_microsoft,
+  "meta": i_meta,
+  "amazon": i_amazon,
+  "stripe": i_stripe,
+  "paypal": i_paypal,
+  "shopify": i_shopify,
+  "figma": i_figma,
+  "notion": i_notion,
+  "slack": i_slack,
+  "airbnb": i_airbnb,
+  "uber": i_uber,
+  "dropbox": i_dropbox,
+  "zoom": i_zoom,
+  "openai": i_openai,
+  "anthropic": i_anthropic,
+  "chrome": i_chrome,
+  "safari": i_safari,
+  "firefox": i_firefox,
   "dollar": i_dollar,
   "euro": i_euro,
   "pound-sterling": i_poundSterling,
@@ -1100,6 +1160,26 @@ export const icons = {
   "lock-keyhole": i_lockKeyhole,
   "terminal-key": i_terminalKey,
   "curl": i_curl,
+  "facebook": i_facebook,
+  "instagram": i_instagram,
+  "x-twitter": i_xTwitter,
+  "threads": i_threads,
+  "tiktok": i_tiktok,
+  "youtube": i_youtube,
+  "linkedin": i_linkedin,
+  "snapchat": i_snapchat,
+  "reddit": i_reddit,
+  "pinterest": i_pinterest,
+  "whatsapp": i_whatsapp,
+  "telegram": i_telegram,
+  "discord": i_discord,
+  "twitch": i_twitch,
+  "spotify": i_spotify,
+  "netflix": i_netflix,
+  "bluesky": i_bluesky,
+  "mastodon": i_mastodon,
+  "medium": i_medium,
+  "dribbble": i_dribbble,
   "lock": i_lock,
   "unlock": i_unlock,
   "eye": i_eye,

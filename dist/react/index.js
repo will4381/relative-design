@@ -147,6 +147,26 @@ import i_userGroup from "../icons/user-group.js";
 import i_idCard from "../icons/id-card.js";
 import i_contactBook from "../icons/contact-book.js";
 import i_translate from "../icons/translate.js";
+import i_google from "../icons/google.js";
+import i_appleLogo from "../icons/apple-logo.js";
+import i_microsoft from "../icons/microsoft.js";
+import i_meta from "../icons/meta.js";
+import i_amazon from "../icons/amazon.js";
+import i_stripe from "../icons/stripe.js";
+import i_paypal from "../icons/paypal.js";
+import i_shopify from "../icons/shopify.js";
+import i_figma from "../icons/figma.js";
+import i_notion from "../icons/notion.js";
+import i_slack from "../icons/slack.js";
+import i_airbnb from "../icons/airbnb.js";
+import i_uber from "../icons/uber.js";
+import i_dropbox from "../icons/dropbox.js";
+import i_zoom from "../icons/zoom.js";
+import i_openai from "../icons/openai.js";
+import i_anthropic from "../icons/anthropic.js";
+import i_chrome from "../icons/chrome.js";
+import i_safari from "../icons/safari.js";
+import i_firefox from "../icons/firefox.js";
 import i_dollar from "../icons/dollar.js";
 import i_euro from "../icons/euro.js";
 import i_poundSterling from "../icons/pound-sterling.js";
@@ -508,6 +528,26 @@ import i_vault from "../icons/vault.js";
 import i_lockKeyhole from "../icons/lock-keyhole.js";
 import i_terminalKey from "../icons/terminal-key.js";
 import i_curl from "../icons/curl.js";
+import i_facebook from "../icons/facebook.js";
+import i_instagram from "../icons/instagram.js";
+import i_xTwitter from "../icons/x-twitter.js";
+import i_threads from "../icons/threads.js";
+import i_tiktok from "../icons/tiktok.js";
+import i_youtube from "../icons/youtube.js";
+import i_linkedin from "../icons/linkedin.js";
+import i_snapchat from "../icons/snapchat.js";
+import i_reddit from "../icons/reddit.js";
+import i_pinterest from "../icons/pinterest.js";
+import i_whatsapp from "../icons/whatsapp.js";
+import i_telegram from "../icons/telegram.js";
+import i_discord from "../icons/discord.js";
+import i_twitch from "../icons/twitch.js";
+import i_spotify from "../icons/spotify.js";
+import i_netflix from "../icons/netflix.js";
+import i_bluesky from "../icons/bluesky.js";
+import i_mastodon from "../icons/mastodon.js";
+import i_medium from "../icons/medium.js";
+import i_dribbble from "../icons/dribbble.js";
 import i_lock from "../icons/lock.js";
 import i_unlock from "../icons/unlock.js";
 import i_eye from "../icons/eye.js";
@@ -739,6 +779,26 @@ export const UserGroup = /*#__PURE__*/ createIcon(i_userGroup, "UserGroup");
 export const IdCard = /*#__PURE__*/ createIcon(i_idCard, "IdCard");
 export const ContactBook = /*#__PURE__*/ createIcon(i_contactBook, "ContactBook");
 export const Translate = /*#__PURE__*/ createIcon(i_translate, "Translate");
+export const Google = /*#__PURE__*/ createIcon(i_google, "Google");
+export const AppleLogo = /*#__PURE__*/ createIcon(i_appleLogo, "AppleLogo");
+export const Microsoft = /*#__PURE__*/ createIcon(i_microsoft, "Microsoft");
+export const Meta = /*#__PURE__*/ createIcon(i_meta, "Meta");
+export const Amazon = /*#__PURE__*/ createIcon(i_amazon, "Amazon");
+export const Stripe = /*#__PURE__*/ createIcon(i_stripe, "Stripe");
+export const Paypal = /*#__PURE__*/ createIcon(i_paypal, "Paypal");
+export const Shopify = /*#__PURE__*/ createIcon(i_shopify, "Shopify");
+export const Figma = /*#__PURE__*/ createIcon(i_figma, "Figma");
+export const Notion = /*#__PURE__*/ createIcon(i_notion, "Notion");
+export const Slack = /*#__PURE__*/ createIcon(i_slack, "Slack");
+export const Airbnb = /*#__PURE__*/ createIcon(i_airbnb, "Airbnb");
+export const Uber = /*#__PURE__*/ createIcon(i_uber, "Uber");
+export const Dropbox = /*#__PURE__*/ createIcon(i_dropbox, "Dropbox");
+export const Zoom = /*#__PURE__*/ createIcon(i_zoom, "Zoom");
+export const Openai = /*#__PURE__*/ createIcon(i_openai, "Openai");
+export const Anthropic = /*#__PURE__*/ createIcon(i_anthropic, "Anthropic");
+export const Chrome = /*#__PURE__*/ createIcon(i_chrome, "Chrome");
+export const Safari = /*#__PURE__*/ createIcon(i_safari, "Safari");
+export const Firefox = /*#__PURE__*/ createIcon(i_firefox, "Firefox");
 export const Dollar = /*#__PURE__*/ createIcon(i_dollar, "Dollar");
 export const Euro = /*#__PURE__*/ createIcon(i_euro, "Euro");
 export const PoundSterling = /*#__PURE__*/ createIcon(i_poundSterling, "PoundSterling");
@@ -1100,6 +1160,26 @@ export const Vault = /*#__PURE__*/ createIcon(i_vault, "Vault");
 export const LockKeyhole = /*#__PURE__*/ createIcon(i_lockKeyhole, "LockKeyhole");
 export const TerminalKey = /*#__PURE__*/ createIcon(i_terminalKey, "TerminalKey");
 export const Curl = /*#__PURE__*/ createIcon(i_curl, "Curl");
+export const Facebook = /*#__PURE__*/ createIcon(i_facebook, "Facebook");
+export const Instagram = /*#__PURE__*/ createIcon(i_instagram, "Instagram");
+export const XTwitter = /*#__PURE__*/ createIcon(i_xTwitter, "XTwitter");
+export const Threads = /*#__PURE__*/ createIcon(i_threads, "Threads");
+export const Tiktok = /*#__PURE__*/ createIcon(i_tiktok, "Tiktok");
+export const Youtube = /*#__PURE__*/ createIcon(i_youtube, "Youtube");
+export const Linkedin = /*#__PURE__*/ createIcon(i_linkedin, "Linkedin");
+export const Snapchat = /*#__PURE__*/ createIcon(i_snapchat, "Snapchat");
+export const Reddit = /*#__PURE__*/ createIcon(i_reddit, "Reddit");
+export const Pinterest = /*#__PURE__*/ createIcon(i_pinterest, "Pinterest");
+export const Whatsapp = /*#__PURE__*/ createIcon(i_whatsapp, "Whatsapp");
+export const Telegram = /*#__PURE__*/ createIcon(i_telegram, "Telegram");
+export const Discord = /*#__PURE__*/ createIcon(i_discord, "Discord");
+export const Twitch = /*#__PURE__*/ createIcon(i_twitch, "Twitch");
+export const Spotify = /*#__PURE__*/ createIcon(i_spotify, "Spotify");
+export const Netflix = /*#__PURE__*/ createIcon(i_netflix, "Netflix");
+export const Bluesky = /*#__PURE__*/ createIcon(i_bluesky, "Bluesky");
+export const Mastodon = /*#__PURE__*/ createIcon(i_mastodon, "Mastodon");
+export const Medium = /*#__PURE__*/ createIcon(i_medium, "Medium");
+export const Dribbble = /*#__PURE__*/ createIcon(i_dribbble, "Dribbble");
 export const Lock = /*#__PURE__*/ createIcon(i_lock, "Lock");
 export const Unlock = /*#__PURE__*/ createIcon(i_unlock, "Unlock");
 export const Eye = /*#__PURE__*/ createIcon(i_eye, "Eye");
@@ -1332,6 +1412,26 @@ export {
   IdCard as IdCardIcon,
   ContactBook as ContactBookIcon,
   Translate as TranslateIcon,
+  Google as GoogleIcon,
+  AppleLogo as AppleLogoIcon,
+  Microsoft as MicrosoftIcon,
+  Meta as MetaIcon,
+  Amazon as AmazonIcon,
+  Stripe as StripeIcon,
+  Paypal as PaypalIcon,
+  Shopify as ShopifyIcon,
+  Figma as FigmaIcon,
+  Notion as NotionIcon,
+  Slack as SlackIcon,
+  Airbnb as AirbnbIcon,
+  Uber as UberIcon,
+  Dropbox as DropboxIcon,
+  Zoom as ZoomIcon,
+  Openai as OpenaiIcon,
+  Anthropic as AnthropicIcon,
+  Chrome as ChromeIcon,
+  Safari as SafariIcon,
+  Firefox as FirefoxIcon,
   Dollar as DollarIcon,
   Euro as EuroIcon,
   PoundSterling as PoundSterlingIcon,
@@ -1693,6 +1793,26 @@ export {
   LockKeyhole as LockKeyholeIcon,
   TerminalKey as TerminalKeyIcon,
   Curl as CurlIcon,
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  XTwitter as XTwitterIcon,
+  Threads as ThreadsIcon,
+  Tiktok as TiktokIcon,
+  Youtube as YoutubeIcon,
+  Linkedin as LinkedinIcon,
+  Snapchat as SnapchatIcon,
+  Reddit as RedditIcon,
+  Pinterest as PinterestIcon,
+  Whatsapp as WhatsappIcon,
+  Telegram as TelegramIcon,
+  Discord as DiscordIcon,
+  Twitch as TwitchIcon,
+  Spotify as SpotifyIcon,
+  Netflix as NetflixIcon,
+  Bluesky as BlueskyIcon,
+  Mastodon as MastodonIcon,
+  Medium as MediumIcon,
+  Dribbble as DribbbleIcon,
   Lock as LockIcon,
   Unlock as UnlockIcon,
   Eye as EyeIcon,
