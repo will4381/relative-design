@@ -64,16 +64,18 @@
   const PILLS = [[5.5, 3.5, 4, 7.5, 0, -2], [13, 5.5, 7.5, 4, 2, 0], [14.5, 13, 4, 7.5, 0, 2], [3.5, 14.5, 7.5, 4, -2, 0]];
 
   // ---- dropbox: four soft rhombi, two lid flaps over two box sides ----
-  const rhomb = (cx, cy) => soft([[cx - 4, cy, 1.25], [cx, cy - 2.5, 1.5], [cx + 4, cy, 1.25], [cx, cy + 2.5, 1.5]]);
+  const rhomb = (cx, cy, a = 4.25, b = 2.25) => soft([[cx - a, cy, 1.25], [cx, cy - b, 1.75], [cx + a, cy, 1.25], [cx, cy + b, 1.75]]);
 
-  // ---- openai: six capsule links around a hexagonal hole ----
-  // capsule centred at (cx, cy): half-length hl between cap centres, radius r, long axis at deg
-  const capsule = (cx, cy, hl, r, deg) => {
-    const u = [Math.cos(rad(deg)), Math.sin(rad(deg))], n = [-u[1], u[0]];
-    const P = (a, b) => `${f(cx + u[0] * a + n[0] * b)} ${f(cy + u[1] * a + n[1] * b)}`;
-    return `M${P(-hl, r)}L${P(hl, r)}A${r} ${r} 0 0 0 ${P(hl, -r)}L${P(-hl, -r)}A${r} ${r} 0 0 0 ${P(-hl, r)}Z`;
-  };
-  const LINKS = [0, 1, 2, 3, 4, 5].map((i) => { const [cx, cy] = rot([[13.25, 7.5]], i * 60)[0]; return capsule(cx, cy, 2.75, 2.25, i * 60); }).join("");
+  // ---- openai: six round lobes around a hexagonal hole, seams swirling out from its corners ----
+  const LOBE_D = 5.75, LOBE_R = 3.5;
+  const ROSETTE = (() => {
+    const h = Math.sqrt(LOBE_R ** 2 - (LOBE_D / 2) ** 2), m = LOBE_D * Math.cos(rad(30)) + h;
+    const dip = (i) => pt(12, 12, m, m, -60 + 60 * i);
+    return [0, 1, 2, 3, 4, 5].map((i) => `${i ? "" : `M${dip(0).join(" ")}`}A${LOBE_R} ${LOBE_R} 0 1 1 ${dip(i + 1).join(" ")}`).join("") + "Z";
+  })();
+  const DIP_M = LOBE_D * Math.cos(rad(30)) + Math.sqrt(LOBE_R ** 2 - (LOBE_D / 2) ** 2);
+  const HOLE = soft([0, 1, 2, 3, 4, 5].map((i) => [...pt(12, 12, 3, 3, -90 + 60 * i), 0.75]));
+  const SEAMS = [0, 1, 2, 3, 4, 5].map((i) => `M${pt(12, 12, 3, 3, -90 + 60 * i).join(" ")}L${pt(12, 12, DIP_M - 0.5, DIP_M - 0.5, -60 + 60 * i).join(" ")}`).join("");
 
   // ---- chrome: three tangents off the inner ring, 120° apart ----
   const CHROME = [0, 120, 240].map((a) => {
@@ -89,6 +91,16 @@
   const slabL = soft([[3.5, 20, 1.5], [7.5, 20, 1], [10.25, 4, 1.5], [6.25, 4, 1]]);
   const slabR = soft([[13.75, 4, 1.5], [17.75, 4, 1], [20.5, 20, 1.5], [16.5, 20, 1]]);
 
+  // ---- firefox: fox crescent whose inner edge is the globe's rim; ear up at the head, round tail tip ----
+  const GLOBE = [12.75, 11.25, 5.25];
+  const FOX = (() => {
+    const [gx, gy, gr] = GLOBE, a0 = -48, a1 = 232;
+    const onGlobe = ([x, y]) => { const l = Math.hypot(x - gx, y - gy); return [f(gx + (gr * (x - gx)) / l), f(gy + (gr * (y - gy)) / l)]; };
+    const P0 = pt(12, 12, 9, 9, a0), P1 = pt(12, 12, 9, 9, a1), Q0 = onGlobe(P0), Q1 = onGlobe(P1);
+    const cap = Math.hypot(P1[0] - Q1[0], P1[1] - Q1[1]) / 2;
+    return soft([Q0, [16, 3, 1.5], P0], false) + `A9 9 0 1 1 ${P1.join(" ")}A${f(cap)} ${f(cap)} 0 0 1 ${Q1.join(" ")}A${gr} ${gr} 0 1 0 ${Q0.join(" ")}Z`;
+  })();
+
   Icons.define("companies", {
     google: {
       els: [["l", "path", { d: G, anim: "draw" }]],
@@ -96,7 +108,7 @@
     "apple-logo": {
       els: [
         ["s", "path", { d: "M12 9C13.25 7.75 15 7.25 16.5 7.5 17.4 7.65 18.1 8.15 18.7 9A3.5 3.5 0 0 0 18.75 14.5C19.1 16.25 18.25 19 16.75 20.25 15.75 21 14.75 21 13.75 20.5Q12 19.75 10.25 20.5C9.25 21 8.25 21 7.25 20.25 5.5 19 4.25 16.25 4.25 13.5 4.25 9.75 6.5 7.25 9.25 7.25 10.25 7.25 11.25 8.25 12 9Z"}],
-        ["s", "path", { d: soft([[12.5, 6.25, 1.5], [13.4, 3.5, 3], [16.5, 2.75, 1.5], [15.4, 5.6, 3]]), anim: "swing", deg: 16, origin: "12.75 6" }],
+        ["s", "path", { d: soft([[12.5, 6.25, 1.5], [13.4, 3.5, 3], [16.5, 2.75, 1.5], [15.4, 5.6, 3]]), anim: "swing", deg: -16, origin: "12.75 6" }],
       ],
     },
     microsoft: {
@@ -109,8 +121,8 @@
     },
     amazon: {
       els: [
-        ["l", "circle", { cx: 11.5, cy: 8.75, r: 3.5 }],
-        ["l", "path", { d: "M15 5.25v7.25" }],
+        ["l", "circle", { cx: 11.25, cy: 8.75, r: 4 }],
+        ["l", "path", { d: "M15.25 4.75v8.5" }],
         ["l", "path", { d: `M4.5 15.25Q12 20.5 ${SMILE_END.join(" ")}`, anim: "draw" }],
         ["l", "path", { d: smileHead, anim: "grow", origin: SMILE_END.join(" "), delay: 0.45 }],
       ],
@@ -120,8 +132,8 @@
     },
     paypal: {
       els: [
-        ["l", "path", { d: P(10, 4), transform: ITALIC, anim: "bounce", y: -1.75, origin: "12 16", delay: 0.12 }],
-        ["k", "path", { d: P(6.5, 8), transform: ITALIC, anim: "bounce", y: -1.75, origin: "9 20" }],
+        ["l", "path", { d: P(10.25, 4), transform: ITALIC, anim: "bounce", y: -1.75, origin: "12.5 16", delay: 0.12 }],
+        ["k", "path", { d: P(6.75, 7.75), transform: ITALIC, anim: "bounce", y: -1.75, origin: "9 19.75" }],
       ],
     },
     shopify: {
@@ -147,7 +159,7 @@
     notion: {
       els: [
         ["s", "path", { d: BADGE }],
-        ["c", "path", { d: soft([[8.75, 16.5], [8.75, 7.5, 2], [15.25, 16.5, 2], [15.25, 7.5]], false), anim: "draw" }],
+        ["c", "path", { d: "M7.25 16.5h3M7.25 7.5h2.5M14 7.5h3.25" }], ["c", "path", { d: soft([[8.75, 16.5], [8.75, 7.5], [15.5, 16.5, 1.5], [15.5, 7.5]], false), anim: "draw" }],
       ],
     },
     slack: {
@@ -164,11 +176,11 @@
     },
     dropbox: {
       els: [
-        ["s", "path", { d: rhomb(7.5, 6.5), anim: "tilt", deg: -20, origin: "3.5 6.5" }],
-        ["s", "path", { d: rhomb(16.5, 6.5), anim: "tilt", deg: 20, origin: "20.5 6.5", delay: 0.06 }],
-        ["s", "path", { d: rhomb(7.5, 13.5) }],
-        ["s", "path", { d: rhomb(16.5, 13.5) }],
-        ["s", "path", { d: soft([[8, 18.25, 1.25], [12, 16, 1.5], [16, 18.25, 1.25], [12, 20.5, 1.5]]) }],
+        ["s", "path", { d: rhomb(7.5, 5.5), anim: "tilt", deg: -20, origin: "3.25 5.5" }],
+        ["s", "path", { d: rhomb(16.5, 5.5), anim: "tilt", deg: 20, origin: "20.75 5.5", delay: 0.06 }],
+        ["s", "path", { d: rhomb(7.5, 12.5) }],
+        ["s", "path", { d: rhomb(16.5, 12.5) }],
+        ["s", "path", { d: rhomb(12, 18.75, 3.5, 1.75) }],
       ],
     },
     zoom: {
@@ -179,7 +191,7 @@
       ],
     },
     openai: {
-      els: [["l", "path", { d: LINKS, anim: "turn", deg: 60, origin: "12 12" }]],
+      els: [["s", "path", { d: ROSETTE, anim: "turn", deg: 60, origin: "12 12" }], ["c", "path", { d: HOLE + SEAMS, anim: "turn", deg: 60, origin: "12 12" }]],
     },
     anthropic: {
       els: [
@@ -205,8 +217,10 @@
     },
     firefox: {
       els: [
-        ["s", "circle", { cx: 12.5, cy: 12.75, r: 4.5 }],
-        ["l", "path", { d: "M17.5 4.5c.5 1 .5 2 .25 2.75A9 9 0 1 1 8.25 4.25C9.5 3.6 10.75 3.5 12 3.75 10.5 4.5 9.5 5.5 9 6.75", anim: "wiggle", deg: -12, origin: "12 12" }],
+        ["s", "circle", { cx: GLOBE[0], cy: GLOBE[1], r: GLOBE[2] }],
+        // the fox curls round the globe, pivoting on the globe's centre so its inner edge stays on the rim
+        ["s", "path", { d: FOX, anim: "wiggle", deg: -10, origin: `${GLOBE[0]} ${GLOBE[1]}` }],
+        ["c", "circle", { cx: GLOBE[0], cy: GLOBE[1], r: GLOBE[2] }],
       ],
     },
   });
