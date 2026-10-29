@@ -67,22 +67,25 @@
 
   Icons.define("security", {
     api: {
-      // letters hop in turn, like they're being called
+      // letters jiggle in turn on their baseline (a hop would hit the badge)
       els: [
-        ["l", "path", { d: soft([[3, 17], [6.5, 7, 1.5], [10, 17]], false), anim: "bounce", y: -2, origin: "6.5 17" }],
-        ["l", "path", { d: "M4.35 13.25h4.3", anim: "bounce", y: -2, origin: "6.5 17" }],
-        ["l", "path", { d: "M13 17V7h1.25a2.75 2.75 0 0 1 0 5.5H13", anim: "bounce", y: -2, origin: "15 17", delay: 0.09 }],
-        ["l", "path", { d: "M20.5 7v10", anim: "bounce", y: -2, origin: "20.5 17", delay: 0.18 }],
+        ["s", "path", { d: rr(3, 6, 18, 12, 4) }],
+        ["c", "path", { d: soft([[5.25, 15], [7.75, 9, 0.75], [10.25, 15]], false) + "M6.05 13.1h3.4", anim: "squash", origin: "7.75 15" }],
+        ["c", "path", { d: "M12.75 15V9H14a1.75 1.75 0 0 1 0 3.5h-1.25", anim: "squash", origin: "14.25 15", delay: 0.08 }],
+        ["c", "path", { d: "M18.5 9v6", anim: "squash", origin: "18.5 15", delay: 0.16 }],
       ],
     },
     "api-key": {
       els: [
-        ["l", "path", { d: "M7 3.5A2 2 0 0 0 5 5.5V10A2 2 0 0 1 3 12A2 2 0 0 1 5 14V18.5A2 2 0 0 0 7 20.5", anim: "nudge", x: -1.5 }],
-        ["l", "path", { d: "M17 3.5A2 2 0 0 1 19 5.5V10A2 2 0 0 0 21 12A2 2 0 0 0 19 14V18.5A2 2 0 0 1 17 20.5", anim: "nudge", x: 1.5 }],
+        // status key laid flat across the top, code brackets underneath
         ...[
-          ["s", "circle", { cx: 12, cy: 8, r: 3 }],
-          ["l", "path", { d: "M12 11v9.5h2.5M12 17.5h2.5" }],
-        ].map((e) => (e[2] = { ...e[2], anim: "tilt", deg: 20, origin: "12 8", delay: 0.1 }, e)),
+          ["s", "circle", { cx: 7.25, cy: 7.25, r: 4.25 }],
+          ["d", "circle", { cx: 7.25, cy: 7.25, r: 1.4 }],
+          ["l", "path", { d: "M11.5 7.25H21M21 7.25v-3M17.75 7.25v-3" }],
+        ].map((e) => (e[2] = { ...e[2], anim: "tilt", deg: -15, origin: "7.25 7.25" }, e)),
+        ["l", "path", { d: "M7.5 13.75 4.25 17l3.25 3.25", anim: "nudge", x: -1.5, delay: 0.1 }],
+        ["l", "path", { d: "M13.25 13.5 11 20.5", anim: "wiggle", deg: 12, delay: 0.14 }],
+        ["l", "path", { d: "M16.5 13.75 19.75 17l-3.25 3.25", anim: "nudge", x: 1.5, delay: 0.1 }],
       ],
     },
     "key-round": {
@@ -117,13 +120,13 @@
       ],
     },
     "key-off": {
-      // slash runs through the bow, not along the shaft
+      // key turned a quarter so the standard slash crosses its shaft, clear of the bow
       els: [
-        ["s", "circle", { cx: 8.25, cy: 8.25, r: 5.25 }],
-        ["d", "circle", { cx: 8.25, cy: 8.25, r: 1.6 }],
-        shaft(8.25 + 5.25 * R2, 18.75),
-        ...teeth([[18.75, 3], [15.25, 3]]),
-        ["k", "path", { d: "M19 3L3 19", anim: "draw" }],
+        ["s", "circle", { cx: 6.75, cy: 17.25, r: 3.75 }],
+        ["d", "circle", { cx: 6.75, cy: 17.25, r: 1.25 }],
+        ["l", "path", { d: `M${f(6.75 + 3.75 * R2)} ${f(17.25 - 3.75 * R2)}L18.75 5.25` }],
+        ["l", "path", { d: "M18.75 5.25l-2.12-2.12M15.25 8.75l-2.12-2.12" }],
+        ["k", "path", { d: "M3.5 3.5l17 17", anim: "draw" }],
       ],
     },
     "key-rotate": {
@@ -146,12 +149,10 @@
       ],
     },
     secret: {
+      // masked characters blink in turn
       els: [
-        ["s", "path", { d: "M3.5 7.5C5.5 4.75 8.5 3.25 12 3.25S18.5 4.75 20.5 7.5C18.5 10.25 15.5 11.75 12 11.75S5.5 10.25 3.5 7.5Z" }],
-        ["k", "path", { d: "M7.5 3l9 9", anim: "draw", delay: 0.35 }],
-        ["d", "circle", { cx: 12, cy: 7.5, r: 1.75 }],
-        ["s", "path", { d: rr(3, 15, 18, 6, 3) }],
-        ...[7.5, 12, 16.5].map((cx, i) => ["d", "circle", { cx, cy: 18, r: 1, anim: "pulse", delay: i * 0.1 }]),
+        ["s", "path", { d: rr(3, 6.5, 18, 11, 3.5) }],
+        ...[7.5, 12, 16.5].map((cx, i) => ["d", "circle", { cx, cy: 12, r: 1.6, anim: "pulse", delay: i * 0.1 }]),
       ],
     },
     password: {

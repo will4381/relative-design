@@ -155,6 +155,10 @@
       if (kind === "k")
         out = el({ fill: B, stroke: B, style: `stroke-width:calc(var(--ic-stroke,${stroke}px) + ${2 * gap}px)` }) +
           el(fill ? { fill: W, stroke: W } : { stroke: W });
+      // tiny circles are dots: a stroked r≤1.25 circle leaves a pinhole/seam in some renderers, so draw a
+      // zero-length round-capped line instead, as wide as the circle would be (2r + stroke)
+      else if (kind === "s" && tag === "circle" && +rest.r <= 1.25)
+        out = `<path d="M${rest.cx} ${rest.cy}h0" stroke="${W}" stroke-linecap="round" style="stroke-width:calc(var(--ic-stroke,${stroke}px) + ${2 * rest.r}px)"${rest.transform ? ` transform="${rest.transform}"` : ""}/>`;
       else if (kind === "s") out = el(fill ? { fill: W, stroke: W } : { stroke: W });
       else if (kind === "c") out = el({ stroke: fill ? B : W });
       else if (kind === "d") out = el({ fill: fill ? B : W, stroke: "none" });

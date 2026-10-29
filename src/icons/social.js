@@ -38,20 +38,80 @@
     return smooth(half) + smooth(right).replace(/^M[^C]+/, "L" + right[0].join(" ")) + "Z";
   };
 
+  // Symmetric silhouette: cubic segments [c1x, c1y, c2x, c2y, x, y] down the left half from top centre
+  // (12, top) to bottom centre, mirrored back up the right half.
+  const sym = (top, segs) => {
+    const m = (x) => f(24 - x);
+    let d = `M12 ${top}` + segs.map((g) => "C" + g.join(" ")).join("");
+    const pts = [[12, top], ...segs.map((g) => [g[4], g[5]])];
+    for (let i = segs.length - 1; i >= 0; i--) {
+      const [a, b, c, e] = segs[i];
+      d += `C${m(c)} ${e} ${m(a)} ${b} ${m(pts[i][0])} ${pts[i][1]}`;
+    }
+    return d + "Z";
+  };
+  // snapchat: big round head, little arms out to the sides, skirt flaring to a wavy hem
+  const GHOST = sym(3, [
+    [8.6, 3, 6.9, 5.4, 6.9, 8.5],
+    [6.9, 9.1, 6.4, 9.35, 5.5, 9.5],
+    [4.6, 9.65, 4, 9.9, 4.1, 10.55],
+    [4.2, 11.2, 5.4, 11.2, 6.2, 11.6],
+    [7, 12, 6.6, 13.75, 5.25, 15.1],
+    [4.4, 15.9, 3, 16.1, 3, 16.9],
+    [3, 17.7, 4.6, 17.75, 6.3, 18],
+    [7.6, 18.2, 8.1, 19.2, 9.4, 19.6],
+    [10.4, 19.9, 11.2, 19.6, 12, 20],
+  ]);
+  // tiktok: thick stem, ringed note head, flag curling off the top (even-odd → the ring's hole)
+  const TIKTOK = "M12.65 3H14.25C14.5 5.5 16.75 7.25 19 7.25A.75.75 0 0 1 19.75 8V9.5A.75.75 0 0 1 19 10.25C17.25 10.25 15.5 9.6 14.25 8.5V15.75" +
+    `A5 5 0 1 1 11.65 ${f(15.75 - Math.sqrt(25 - 2.4 ** 2))}V4A1 1 0 0 1 12.65 3Z` + "M11.65 15.75A2.4 2.4 0 1 0 6.85 15.75A2.4 2.4 0 1 0 11.65 15.75Z";
+
+  // reddit: round bubble with a soft tail at the lower left; the Snoo's head (oval + two ears, one outline)
+  // sits in the lower middle. Cut parts carry a black fill so fill mode cuts them solid, like the real mark.
+  const SNOO = (() => {
+    const B = [12, 12], R = 9, a = pt(...B, R, 100), b = pt(...B, R, 158);
+    const bubble = `M${a.join(" ")}A${R} ${R} 0 1 0 ${b.join(" ")}` + soft([b, [3.25, 20.75, 1.25], a], false).replace(/^M[^L]+/, "") + "Z";
+    const cx = 12.25, cy = 14.25, rx = 5.5, ry = 3.75, er = 1.25, ex = 4.6, ey = 2.9; // ear offset from centre
+    // where the left ear's circle crosses the oval (sampled; mirrored for the right ear)
+    const hits = [];
+    let prev;
+    for (let i = 0; i <= 3600; i++) {
+      const t = (Math.PI * 2 * i) / 3600, x = cx + rx * Math.cos(t), y = cy + ry * Math.sin(t);
+      const out = Math.hypot(x - (cx - ex), y - (cy - ey)) > er;
+      if (prev !== undefined && out !== prev) hits.push([f(x), f(y)]);
+      prev = out;
+    }
+    const [lo, up] = hits[0][1] > hits[1][1] ? hits : [hits[1], hits[0]]; // lower, upper crossing on the left
+    const m = ([x, y]) => [f(2 * cx - x), y];
+    const head = `M${up.join(" ")}A${er} ${er} 0 1 0 ${lo.join(" ")}A${rx} ${ry} 0 1 0 ${m(lo).join(" ")}` +
+      `A${er} ${er} 0 1 0 ${m(up).join(" ")}A${rx} ${ry} 0 0 0 ${up.join(" ")}Z`;
+    const top = cy - ry, ball = { cx: 14.5, cy: 7, r: 1.05 };
+    return {
+      bubble, head, cx, eyeY: cy - 0.75, ball,
+      pivot: `${cx} ${top}`,
+      stalk: `M${cx} ${top}V9Q${cx} ${ball.cy} ${ball.cx - ball.r} ${ball.cy}`,
+      smile: `M${cx - 1.25} ${cy + 1.4}q1.25 .7 2.5 0`,
+    };
+  })();
+
   const BADGE = rr(3.5, 3.5, 17, 17, 4);
   const hop = (d, ox, base, delay = 0, y = -1.75) => ["c", "path", { d, anim: "bounce", y, origin: `${ox} ${base}`, delay }];
 
   // whatsapp: round bubble whose tail is a soft nub at the lower left
   const WA = (() => {
     const c = [12.5, 11.5], R = 8.5, a = pt(...c, R, 112), b = pt(...c, R, 158);
-    return `M${a.join(" ")}A${R} ${R} 0 1 0 ${b.join(" ")}` + soft([b, [3.75, 20.25, 1.75], a], false).replace(/^M[^L]+/, "") + "Z";
+    return `M${a.join(" ")}A${R} ${R} 0 1 0 ${b.join(" ")}` + soft([b, [3.5, 20.5, 1.25], a], false).replace(/^M[^L]+/, "") + "Z";
   })();
 
   Icons.define("social", {
     facebook: {
+      // a friendly "like" pulse; the f's stem runs out through the bottom of the circle, as in the real mark
+      anim: "pop",
+      s: 1.12,
+      origin: "12 12",
       els: [
-        ["s", "path", { d: BADGE }],
-        hop("M12.5 17.25V10.25A3.25 3.25 0 0 1 15.75 7H16.25M9.75 11.25h5.5", 12.5, 17.25),
+        ["s", "circle", { cx: 12, cy: 12, r: 9 }],
+        ["c", "path", { d: "M12 21V10.5A3.5 3.5 0 0 1 15.5 7H16.25M8.75 13.25h6.75" }],
       ],
     },
     instagram: {
@@ -69,24 +129,22 @@
     },
     threads: {
       els: [
-        ["l", "circle", { cx: 12, cy: 12.25, r: 3 }],
-        ["l", "path", { d: "M15 9.25V13.25A2.25 2.25 0 0 0 19.5 13.25V12A7.5 7.5 0 1 0 16.25 18.25", anim: "draw" }],
+        ["l", "path", { d: "M18.5 7.25A7.5 9 0 1 0 19.25 13.75C19.25 10.75 16 9.75 12.75 10.25 10.25 10.6 8.75 11.75 8.75 13.25 8.75 15 10.5 15.75 12.25 15.5 14.75 15.1 15.75 13 15.5 10.5", anim: "draw" }],
       ],
     },
     tiktok: {
       // a little dance from its foot
       anim: "wiggle",
       deg: 10,
-      origin: "11 20.25",
+      origin: "11 20.75",
       els: [
-        ["s", "circle", { cx: 9.5, cy: 16.75, r: 3.25 }],
-        ["l", "path", { d: "M12.75 16.75V3.75c0 2.75 2.25 5 5 5" }],
+        ["s", "path", { "fill-rule": "evenodd", d: TIKTOK }],
       ],
     },
     youtube: {
       els: [
-        ["s", "path", { d: rr(3, 5.25, 18, 13.5, 4.5) }],
-        ["d", "path", { d: soft([[9.75, 8.5, 1.25], [16, 12, 1.5], [9.75, 15.5, 1.25]]), anim: "nudge", x: 2 }],
+        ["s", "path", { d: rr(3, 5.75, 18, 12.5, 4) }],
+        ["d", "path", { d: soft([[9.5, 8.25, 1.25], [16.25, 12, 1.5], [9.5, 15.75, 1.25]]), anim: "nudge", x: 2 }],
       ],
     },
     linkedin: {
@@ -100,26 +158,28 @@
     snapchat: {
       anim: "float",
       y: -1.75,
-      els: [
-        ["s", "path", { d: mirrored([[12, 3.75], [8.5, 5.25], [7.25, 8.75], [7.25, 11.25], [5.25, 12.5], [6.5, 14.25], [5.75, 16.25], [4, 17.25], [6, 18.25], [8.5, 18.5], [12, 19.5]]) }],
-      ],
+      els: [["s", "path", { d: GHOST }]],
     },
     reddit: {
+      // the Snoo in its bubble: antenna boings, then the eyes blink
       els: [
-        ["l", "path", { d: "M12 9.25 13 4.5H15.5", anim: "swing", deg: -14, origin: "12 9.25" }],
-        ["s", "circle", { cx: 17, cy: 4.5, r: 1.5, anim: "swing", deg: -14, origin: "12 9.25" }],
-        ["s", "circle", { cx: 4.75, cy: 10.75, r: 1.5 }],
-        ["s", "circle", { cx: 19.25, cy: 10.75, r: 1.5 }],
-        ["k", "ellipse", { cx: 12, cy: 14.75, rx: 7.75, ry: 5.5 }],
-        ["d", "circle", { cx: 9.25, cy: 14, r: 1.25 }],
-        ["d", "circle", { cx: 14.75, cy: 14, r: 1.25 }],
-        ["c", "path", { d: "M9.5 17.25q2.5 1.5 5 0" }],
+        ["s", "path", { d: SNOO.bubble }],
+        ["c", "path", { fill: "#000", d: SNOO.head }],
+        ["c", "path", { d: SNOO.stalk, anim: "swing", deg: -10, origin: SNOO.pivot }],
+        ["c", "circle", { fill: "#000", ...SNOO.ball, anim: "swing", deg: -10, origin: SNOO.pivot }],
+        ["s", "circle", { fill: "#fff", "stroke-width": 0, cx: SNOO.cx - 2.25, cy: SNOO.eyeY, r: 1.3, anim: "blink", delay: 0.35 }],
+        ["s", "circle", { fill: "#fff", "stroke-width": 0, cx: SNOO.cx + 2.25, cy: SNOO.eyeY, r: 1.3, anim: "blink", delay: 0.35 }],
+        ["l", "path", { d: SNOO.smile }],
       ],
     },
     pinterest: {
+      // swings from its pin at the top
+      anim: "swing",
+      deg: 12,
+      origin: "12 3",
       els: [
         ["s", "circle", { cx: 12, cy: 12, r: 9 }],
-        ["c", "path", { d: `M${pt(12.75, 10.75, 3.75, 165).join(" ")}A3.75 3.75 0 1 1 ${pt(12.75, 10.75, 3.75, 115).join(" ")}M11.75 9 9.75 18.75`, anim: "pop", s: 0.86, origin: "12 12" }],
+        ["c", "path", { d: `M${pt(12.75, 10.25, 4.25, 160).join(" ")}A4.25 4.25 0 1 1 ${pt(12.75, 10.25, 4.25, 112).join(" ")}M12 8.25 9.5 21` }],
       ],
     },
     whatsapp: {
@@ -131,7 +191,8 @@
     telegram: {
       els: [
         ["s", "circle", { cx: 12, cy: 12, r: 9 }],
-        ["c", "path", { d: soft([[6.25, 12.25, 1.75], [15.75, 8.25, 1.75], [13.25, 16.75, 1.5], [10.25, 14, 0.5]]) + "M10.25 14 13.25 11", anim: "nudge", x: 1.25, y: -1.25 }],
+        // outline in line, solid cut in fill (black fill only ever lands on the circle's empty middle in line)
+        ["c", "path", { fill: "#000", d: soft([[5.5, 11.75, 1.25], [17, 6.75, 1.5], [13.25, 17.25, 1.25], [11.75, 13.25, 0.4]]), anim: "nudge", x: 1, y: -1 }],
       ],
     },
     discord: {
