@@ -73,6 +73,16 @@ Parameters: `x`/`y` (grid units), `deg`, `s` (peak scale), `origin` ("x y" pivot
 **Verify motion with the filmstrip** (see Workflow). Frame 1 and the last frame must equal the rest pose;
 frames 2–9 must read clearly as the action you intended. If you can't tell what's happening, it's wrong.
 
+## Logos (brands, social, companies)
+- A logo must be recognisable at a glance, so its **proportions follow the real mark**: silhouette, aspect,
+  weight and key features (Google's thick G with its bar, Apple's bite and leaf, Amazon's "a" over the smile).
+- Logos are solid marks, so build them as closed `s` shapes: **fill = the real silhouette, softened**
+  (corner radii per "No sharp points"); **line = the 2px outline of that same silhouette**, with internal
+  details as `c`/`d` cuts. Only marks that are linear in reality (Spotify's arcs, RSS waves) are strokes.
+- Scale the mark to fill the live area (3–21) like other icons. Don't add a container the real logo doesn't have.
+- Check against the reference: `npm run compare -- out.png src/icons/<file>.js [--only a,b]`
+  renders the real mark (Simple Icons, CC0, used as a visual reference only) beside ours.
+
 ## Originality (hard rule)
 Draw every path yourself from geometry. Do not open, copy, trace, or adapt paths from any icon library
 (Central, Hugeicons, Lucide, Feather, Tabler, Phosphor, Heroicons, Material, Radix, etc.), including any

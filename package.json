@@ -49,7 +49,8 @@
     "build": "node build.cjs",
     "test": "node build.cjs && node test.js",
     "sheet": "node tools/sheet.cjs",
-    "film": "node tools/film.cjs"
+    "film": "node tools/film.cjs",
+    "compare": "node tools/compare.cjs"
   },
   "peerDependencies": {
     "react": ">=18"
@@ -58,5 +59,8 @@
     "react": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "simple-icons": "^13.21.0"
   }
 }
