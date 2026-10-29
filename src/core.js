@@ -64,7 +64,9 @@
     // fade a part out and back: signal bars, sound waves (stagger with delay)
     pulse: `45%{opacity:.15}`,
     // stroke draws itself on: checks, lines, charts (l/c paths only)
-    draw: `0%{stroke-dashoffset:1;opacity:0}6%{opacity:1}`, // fade in the first frames so round caps don't leave a dot
+    // finishes in the first ~40% with a quick ease-out, then holds — a full-length draw feels sluggish.
+    // fades in over the first frames so round caps don't leave a dot.
+    draw: `0%{stroke-dashoffset:1;opacity:0;animation-timing-function:cubic-bezier(.25,.8,.3,1)}5%{opacity:1}40%{stroke-dashoffset:0}`,
   };
   const LINEAR = ["spin"];
   const PARAMS = { x: "px", y: "px", deg: "deg", s: "" };
