@@ -106,3 +106,13 @@ npm run film -- out.png src/icons/fun.js       # animation filmstrips, frame by 
 ```
 
 `dist/` is committed so git installs work without a build step. Rebuild and commit it with your changes.
+
+## Swift
+
+The native package lives in [relative-design-swift](https://github.com/will4381/relative-design-swift)
+(SwiftUI vector icons + fonts). After changing icons here, export them there:
+
+```bash
+npm run export:swift -- ../relative-design-swift
+cd ../relative-design-swift && swift test && git commit -am "Update icons" && git push
+```

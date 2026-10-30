@@ -50,7 +50,8 @@
     "test": "node build.cjs && node test.js",
     "sheet": "node tools/sheet.cjs",
     "film": "node tools/film.cjs",
-    "compare": "node tools/compare.cjs"
+    "compare": "node tools/compare.cjs",
+    "export:swift": "node tools/export-swift.cjs"
   },
   "peerDependencies": {
     "react": ">=18"
@@ -61,6 +62,7 @@
     }
   },
   "devDependencies": {
-    "simple-icons": "^13.21.0"
+    "simple-icons": "^13.21.0",
+    "svgpath": "^2.6.0"
   }
 }
